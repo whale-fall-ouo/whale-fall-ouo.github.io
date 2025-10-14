@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张千宇 - 一分钟自我介绍</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 4rem 0;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-section .subtitle {
+            font-size: 1.3rem;
+            color: #7f8c8d;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        .intro-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #34495e;
+            text-align: justify;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .skill-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.3rem 0;
+            color: #7f8c8d;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .skill-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .experience-timeline {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 3rem;
+        }
+
+        .timeline-item {
+            border-left: 3px solid #3498db;
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 13px;
+            height: 13px;
+            background: #3498db;
+            border-radius: 50%;
+        }
+
+        .timeline-item h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item p {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            color: white;
+            margin-top: 3rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .intro-card, .experience-timeline {
+                padding: 2rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, rgba(52, 152, 219, 0.1), rgba(46, 204, 113, 0.1));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-circle:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-circle:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-circle:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
+
+    <div class="container">
+        <div class="hero-section">
+            <h1>张千宇</h1>
+            <p class="subtitle">Java后端开发工程师</p>
+            <p style="color: #95a5a6; font-size: 1rem;">22岁 · 软件工程专业 · 应届毕业</p>
+        </div>
+
+        <div class="intro-card">
+            <div class="intro-text">
+                大家好，我叫<span class="highlight">张千宇</span>，今年22岁，是一名软件工程专业的应届毕业生。我专注于<span class="highlight">Java后端开发</span>，同时具备良好的跨平台开发能力。
+                <br><br>
+                在教育背景方面，我本科就读于<span class="highlight">武昌理工学院软件工程专业</span>，大专毕业于湖北科技职业学院移动应用开发专业。这样的学习经历让我具备了扎实的理论基础和丰富的实践经验。
+                <br><br>
+                我拥有丰富的实习经历，先后在<span class="highlight">四家公司</span>担任不同技术栈的开发岗位，包括安卓开发、Java后端、前端开发等多个领域，积累了丰富的项目经验和团队协作能力。
+                <br><br>
+                技术能力方面，我熟练掌握<span class="highlight">SSM、SpringBoot</span>等主流Java开发框架，熟悉微服务架构和Redis缓存技术，具备MySQL数据库优化经验。同时我还掌握前端Vue技术栈，以及Android、Uni-app等跨平台开发技术。
+                <br><br>
+                我参与过多个完整的项目开发周期，包括儿童教育类App、游戏服务器、企业管理系统和智能家居控制平台，希望能有机会加入贵公司，为团队贡献自己的技术能力和学习热情。谢谢！
+            </div>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>后端技术栈</h3>
+                <ul class="skill-list">
+                    <li>Spring Boot / Spring Cloud</li>
+                    <li>MyBatis / MyBatis Plus</li>
+                    <li>Redis 缓存技术</li>
+                    <li>MySQL 数据库优化</li>
+                    <li>Docker 容器技术</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3>前端技术栈</h3>
+                <ul class="skill-list">
+                    <li>Vue.js + Element UI</li>
+                    <li>Uni-app 跨平台开发</li>
+                    <li>Android 原生开发</li>
+                    <li>Kotlin / Jetpack Compose</li>
+                    <li>HTML5 / CSS3 / JavaScript</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3>项目经验</h3>
+                <ul class="skill-list">
+                    <li>儿童智能学习机App开发</li>
+                    <li>Minecraft RPG服务器</li>
+                    <li>企业绩效管理系统</li>
+                    <li>智能家居控制平台</li>
+                    <li>多平台应用开发</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3>开发工具</h3>
+                <ul class="skill-list">
+                    <li>IntelliJ IDEA</li>
+                    <li>Git 版本控制</li>
+                    <li>Maven 项目管理</li>
+                    <li>Linux 操作系统</li>
+                    <li>Jenkins CI/CD</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="experience-timeline">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: #2c3e50; font-size: 2rem;">实习经历</h2>
+            
+            <div class="timeline-item">
+                <h4>深圳市玩瞳科技有限公司 - 安卓实习生</h4>
+                <p>参与儿童智能学习机项目，负责UI还原、功能开发和性能优化</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>武汉茶卡贝游戏科技有限公司 - Java后端开发</h4>
+                <p>负责基于Minecraft的RPG服务器开发，包括分布式数据同步、支付系统对接等</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>无锡伟风智能科技有限公司 - Java后端开发</h4>
+                <p>参与企业聘任制绩效管理系统开发，负责功能迭代和报表优化</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>武汉艾飞星创电子科技有限公司 - Uniapp前端开发</h4>
+                <p>负责智能家居控制平台开发，实现跨平台应用和WebSocket长连接</p>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>期待与您合作</h2>
+            <p>我是一名充满热情的应届毕业生，具备扎实的技术基础和丰富的实习经验，期待能为贵公司贡献自己的力量。</p>
+        </div>
+    </div>
+</body>
+</html>
